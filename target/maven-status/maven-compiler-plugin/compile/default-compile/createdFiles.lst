@@ -1,0 +1,4 @@
+br\com\mam\demorest\DemorestApplication.class
+br\com\mam\demorest\repository\JediRepository.class
+br\com\mam\demorest\controller\JediController.class
+br\com\mam\demorest\model\Jedi.class
