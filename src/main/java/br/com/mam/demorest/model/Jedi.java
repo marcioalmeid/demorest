@@ -1,8 +1,21 @@
 package br.com.mam.demorest.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Getter
+@Setter
 public class Jedi {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     @NotBlank
     private String name;
     @NotBlank
@@ -16,19 +29,4 @@ public class Jedi {
         this.lastName = lastName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastname) {
-        this.lastName = lastname;
-    }
 }

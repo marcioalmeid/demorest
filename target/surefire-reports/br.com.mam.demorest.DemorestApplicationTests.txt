@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: br.com.mam.demorest.DemorestApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.586 s - in br.com.mam.demorest.DemorestApplicationTests
