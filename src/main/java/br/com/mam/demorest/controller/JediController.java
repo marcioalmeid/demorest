@@ -1,7 +1,7 @@
 package br.com.mam.demorest.controller;
 
 import br.com.mam.demorest.model.Jedi;
-import br.com.mam.demorest.repository.JediRepository;
+import br.com.mam.demorest.service.JediService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -10,12 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class JediController {
     @Autowired
-    private JediRepository jediRepository;
+    private JediService jediService;
 
     @GetMapping("/")
     public String redirect() {
@@ -26,7 +25,7 @@ public class JediController {
     public ModelAndView jedi() {
         final ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("jedi");
-        modelAndView.addObject("allJedi", jediRepository.findAll());
+        modelAndView.addObject("allJedi", jediService.getAll());
         return modelAndView;
     }
 
@@ -44,7 +43,7 @@ public class JediController {
         if (result.hasErrors()) {
             return "new-jedi";
         }
-        jediRepository.save(jedi);
+        jediService.save(jedi);
         redirectAttributes.addFlashAttribute("message", "Jedi cadastrado com sucesso.");
         return "redirect:jedi";
     }
@@ -54,7 +53,7 @@ public class JediController {
     public ModelAndView searchJedi(@RequestParam("name") String name){
         final ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("jedi");
-        modelAndView.addObject("allJedi", this.jediRepository.findByNameContainingIgnoreCase(name));
+        modelAndView.addObject("allJedi", this.jediService.getByName(name));
         return modelAndView;
     }
 
